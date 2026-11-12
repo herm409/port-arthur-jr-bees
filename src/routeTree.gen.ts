@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as FootballRouteImport } from './routes/football'
 import { Route as HoneybeesRouteImport } from './routes/honeybees'
+import { Route as PhotosRouteImport } from './routes/photos'
 import { Route as RegisterRouteImport } from './routes/register'
 import { Route as SupportRouteImport } from './routes/support'
 
@@ -30,6 +31,11 @@ const HoneybeesRoute = HoneybeesRouteImport.update({
   path: '/honeybees',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PhotosRoute = PhotosRouteImport.update({
+  id: '/photos',
+  path: '/photos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RegisterRoute = RegisterRouteImport.update({
   id: '/register',
   path: '/register',
@@ -45,6 +51,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/football': typeof FootballRoute
   '/honeybees': typeof HoneybeesRoute
+  '/photos': typeof PhotosRoute
   '/register': typeof RegisterRoute
   '/support': typeof SupportRoute
 }
@@ -52,6 +59,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/football': typeof FootballRoute
   '/honeybees': typeof HoneybeesRoute
+  '/photos': typeof PhotosRoute
   '/register': typeof RegisterRoute
   '/support': typeof SupportRoute
 }
@@ -60,21 +68,31 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/football': typeof FootballRoute
   '/honeybees': typeof HoneybeesRoute
+  '/photos': typeof PhotosRoute
   '/register': typeof RegisterRoute
   '/support': typeof SupportRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/football' | '/honeybees' | '/register' | '/support'
+  fullPaths:
+    '/' | '/football' | '/honeybees' | '/photos' | '/register' | '/support'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/football' | '/honeybees' | '/register' | '/support'
-  id: '__root__' | '/' | '/football' | '/honeybees' | '/register' | '/support'
+  to: '/' | '/football' | '/honeybees' | '/photos' | '/register' | '/support'
+  id:
+    | '__root__'
+    | '/'
+    | '/football'
+    | '/honeybees'
+    | '/photos'
+    | '/register'
+    | '/support'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FootballRoute: typeof FootballRoute
   HoneybeesRoute: typeof HoneybeesRoute
+  PhotosRoute: typeof PhotosRoute
   RegisterRoute: typeof RegisterRoute
   SupportRoute: typeof SupportRoute
 }
@@ -102,6 +120,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HoneybeesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/photos': {
+      id: '/photos'
+      path: '/photos'
+      fullPath: '/photos'
+      preLoaderRoute: typeof PhotosRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/register': {
       id: '/register'
       path: '/register'
@@ -123,6 +148,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FootballRoute: FootballRoute,
   HoneybeesRoute: HoneybeesRoute,
+  PhotosRoute: PhotosRoute,
   RegisterRoute: RegisterRoute,
   SupportRoute: SupportRoute,
 }

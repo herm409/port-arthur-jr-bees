@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button";
 const links = [
   { to: "/football", label: "Field", note: "Football" },
   { to: "/honeybees", label: "Floor", note: "Honey Bees" },
+  { to: "/photos", label: "Photos", note: "Pictures" },
   { to: "/support", label: "Village", note: "Support" },
   { to: "/register", label: "Register", note: "Call sheet" },
 ] as const;

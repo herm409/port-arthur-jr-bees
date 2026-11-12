@@ -4,6 +4,7 @@ import { SquadFinder } from "@/components/squad-finder";
 import { GiftLadder } from "@/components/gift-ladder";
 import { Button } from "@/components/ui/button";
 import { milestones, org } from "@/lib/org";
+import { photoTeasers } from "@/lib/photos";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -89,6 +90,23 @@ function Home() {
                 <p className="mt-2 text-cream/85">Cheer the season. Compete after it. Etiquette, sisterhood, and a stack of regional hardware.</p>
               </div>
             </Link>
+          </div>
+        </section>
+
+        <section className="sideline">
+          <div className="flex items-baseline justify-between gap-4">
+            <h2 className="font-display text-5xl uppercase">Photos</h2>
+            <Link to="/photos" className="font-display text-lg uppercase underline decoration-plum decoration-2 underline-offset-4">
+              All of them
+            </Link>
+          </div>
+          <div className="mt-5 flex gap-3 overflow-x-auto pb-2">
+            {photoTeasers.map((photo) => (
+              <Link key={photo.src} to="/photos" className="w-56 shrink-0 sm:w-64">
+                <img src={photo.src} alt={photo.alt} className="aspect-[4/3] w-full object-cover" />
+                <p className="mt-1 text-sm text-stone">{photo.caption}</p>
+              </Link>
+            ))}
           </div>
         </section>
 
