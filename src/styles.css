@@ -6,8 +6,9 @@
   --color-gold: #e0b03a;
   --color-plum: #542a86;
   --color-stone: #5c5348;
+  --color-lamp: #ffe9a8;
   --font-display: "Big Shoulders Display", "Arial Narrow", Impact, sans-serif;
-  --font-body: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Libre Franklin", "Helvetica Neue", Arial, sans-serif;
   --text-hero: clamp(4.25rem, 14vw, 7.75rem);
   --text-hero--line-height: 0.84;
   --text-hero--letter-spacing: -0.02em;
@@ -132,4 +133,27 @@
     gap: 2.5rem;
     padding-block: 5.5rem;
   }
+}
+
+
+.hero-lights {
+  filter: brightness(0.72) saturate(0.9);
+  animation: lights-up 900ms ease-out forwards;
+}
+
+@keyframes lights-up {
+  to {
+    filter: brightness(1) saturate(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-lights {
+    animation: none;
+    filter: none;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }

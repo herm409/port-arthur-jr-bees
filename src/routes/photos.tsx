@@ -1,18 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { albums, type AlbumPhoto } from "@/lib/photos";
+import { pageHead } from "@/lib/org";
 
 export const Route = createFileRoute("/photos")({
-  head: () => ({
-    meta: [
-      { title: "Photos — Port Arthur Jr Bees" },
-      {
-        name: "description",
-        content:
-          "Pictures of Port Arthur Jr Bees football and Honey Bees dance, from the association’s earlier site.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Photos | Port Arthur Jr Bees",
+      description: "Photos of Port Arthur Jr Bees football and the Honeybees dance team, from the association's earlier site.",
+      path: "/photos",
+    }),
   component: PhotosPage,
 });
 
@@ -31,12 +28,12 @@ function PhotosPage() {
     return () => window.removeEventListener("keydown", onKey);
   }, [open, photos.length]);
 
+  let seen = 0;
+
   return (
     <article className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
       <h1 className="font-display text-6xl uppercase sm:text-7xl">Photos</h1>
-      <p className="mt-4 max-w-2xl text-xl text-stone">
-        Football and Honey Bees.
-      </p>
+      <p className="mt-4 max-w-2xl text-xl text-stone">Football and Honeybees, from the program's own pictures.</p>
 
       {albums.map((album) => (
         <section key={album.title} className="mt-12">
@@ -44,12 +41,20 @@ function PhotosPage() {
           <div className="mt-5 columns-1 gap-4 sm:columns-2 lg:columns-3">
             {album.photos.map((photo) => {
               const index = photos.findIndex((item) => item.src === photo.src);
+              const eager = seen < 6;
+              seen += 1;
               return (
                 <figure key={photo.src} className="mb-4 break-inside-avoid">
-                  <button type="button" className="block w-full" onClick={() => setOpen(index)}>
-                    <img src={photo.src} alt={photo.alt} className="w-full" />
+                  <button type="button" className="block min-h-11 w-full" onClick={() => setOpen(index)}>
+                    <img
+                      src={photo.src}
+                      alt={photo.alt}
+                      className="w-full"
+                      loading={eager ? "eager" : "lazy"}
+                      decoding="async"
+                    />
                   </button>
-                  <figcaption className="mt-1 text-sm text-stone">{photo.caption}</figcaption>
+                  {photo.caption ? <figcaption className="mt-1 text-sm text-stone">{photo.caption}</figcaption> : null}
                 </figure>
               );
             })}
@@ -81,7 +86,7 @@ function Viewer({
   onNext: () => void;
 }) {
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4" role="dialog" aria-modal="true" aria-label={photo.caption}>
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-ink/90 p-4" role="dialog" aria-modal="true" aria-label={photo.caption || photo.alt}>
       <button type="button" className="absolute inset-0" aria-label="Close photo" onClick={onClose} />
       <div className="relative z-10 max-h-[90vh] max-w-5xl">
         <img src={photo.src} alt={photo.alt} className="max-h-[80vh] w-auto max-w-full" />

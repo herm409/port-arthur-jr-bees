@@ -1,205 +1,170 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { HeroStage } from "@/components/hero-stage";
-import { SquadFinder } from "@/components/squad-finder";
-import { GiftLadder } from "@/components/gift-ladder";
 import { Button } from "@/components/ui/button";
-import { milestones, org } from "@/lib/org";
-import { photoTeasers } from "@/lib/photos";
+import { FundMeter } from "@/components/fund-meter";
+import { JoinCard } from "@/components/join-card";
+import { PendingTag } from "@/components/pending-tag";
+import { allStateGame } from "@/lib/campaign";
+import { org, pageHead, phones } from "@/lib/org";
 
 export const Route = createFileRoute("/")({
-  head: () => ({
-    meta: [
-      { title: "Port Arthur Jr Bees — The village on the sideline" },
-      {
-        name: "description",
-        content:
-          "Gulf Coast Pop Warner football and Honey Bees dance in Port Arthur. Purple, gold, and a sideline since the mid-1980s.",
-      },
-    ],
-  }),
+  head: () =>
+    pageHead({
+      title: "Port Arthur Jr Bees | Youth Football and Dance Since 1985",
+      description:
+        "Port Arthur Jr Bees is a nonprofit youth football and Honeybees dance program in Port Arthur, Texas. Sign a child up or give to the 30x30 Building Fund.",
+      path: "/",
+    }),
   component: Home,
 });
 
 function Home() {
   return (
     <>
-      <section className="mx-auto grid max-w-6xl items-end gap-10 px-5 py-12 md:px-8 lg:grid-cols-12 lg:py-16">
-        <div className="lg:col-span-5">
-          <p className="font-display text-sm uppercase tracking-[0.28em] text-plum">Port Arthur Jr Bees Association</p>
-          <h1 className="mt-4 text-hero uppercase text-ink">
-            The village
-            <span className="block text-plum">is the roster.</span>
+      <section id="hero" className="relative isolate min-h-[100svh] overflow-hidden bg-ink text-cream md:min-h-[36rem]">
+        <picture>
+          <source media="(max-width: 767px)" srcSet="/media/jimdo/25-i836be40.jpg" />
+          <img
+            src="/media/jimdo/08-i5fa4d54.jpg"
+            alt="Coach Brad and Jr Bees players in purple and gold honeycomb jerseys at a night game."
+            width={1400}
+            height={1050}
+            className="hero-lights absolute inset-0 size-full object-cover"
+            fetchPriority="high"
+          />
+        </picture>
+        <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/25" aria-hidden="true" />
+        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 py-12 md:min-h-[36rem] md:justify-center md:px-8 md:py-20">
+          <p className="font-display text-sm uppercase tracking-[0.2em] text-lamp">
+            {org.association}, a nonprofit
+          </p>
+          <h1 className="mt-4 max-w-4xl font-display text-[clamp(2.4rem,9vw,5.4rem)] uppercase leading-[0.88] text-cream">
+            Port Arthur youth football and dance since 1985.
           </h1>
-          <p className="mt-6 max-w-md text-xl text-ink">
-            Football and Honey Bees in Port Arthur. {org.affiliation}. The program has been here since the mid-1980s.
+          <p className="mt-5 max-w-xl text-lg text-cream/90 sm:text-xl">
+            Jr Bees football and the Honeybees dance team. A Gulf Coast Pop Warner program led by Coach Brad Coleman.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <Button asChild tone="plum">
-              <Link to="/register" search={{ age: 10, side: "either" }}>Put a child in</Link>
+            <Button asChild tone="gold" className="min-h-12 whitespace-nowrap">
+              <Link to="/donate">Donate to 30x30</Link>
             </Button>
-            <Button asChild tone="quiet">
-              <Link to="/support">Back the village</Link>
-            </Button>
-            <Button asChild tone="quiet">
-              <Link to="/register" hash="medical">Medical form</Link>
+            <Button asChild tone="line" className="min-h-12 whitespace-nowrap">
+              <Link to="/register">Sign up</Link>
             </Button>
           </div>
-        </div>
-        <div className="lg:col-span-7">
-          <HeroStage />
         </div>
       </section>
 
-      <section className="border-y border-ink/10">
-        <div className="mx-auto grid max-w-6xl sm:grid-cols-3">
-          {[
-            ["Since the mid-80s", "Coach Brad has been with the Jr Bees since then, and president since 2007."],
-            ["The kids", "Hard work, a decent attitude, and a little fun."],
-            ["Football and dance", "Jr Bees play. Honey Bees cheer and compete."],
-          ].map(([title, body]) => (
-            <div key={title} className="border-b border-ink/10 px-5 py-6 sm:border-b-0 sm:border-r sm:last:border-r-0 md:px-8">
-              <p className="font-display text-2xl uppercase">{title}</p>
-              <p className="mt-2 text-stone">{body}</p>
-            </div>
-          ))}
+      <FundMeter />
+      <JoinCard />
+
+      <section className="bg-ink text-cream">
+        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-2 md:items-center md:px-8 md:py-16">
+          <div>
+            <p className="font-display text-sm uppercase tracking-[0.2em] text-gold">Game days off the field</p>
+            <h2 className="mt-3 font-display text-5xl uppercase">Where the kids go</h2>
+            <p className="mt-4 text-lg text-cream/90">
+              Coach Brad takes the kids to Lamar University football games, Houston Texans training camp, and Texas Southern games. When the team van broke down, Town and Country Ford covered more than $3,000 in repairs to keep the trips going.
+            </p>
+          </div>
+          <div className="grid grid-cols-3 gap-2">
+            <img
+              src="/media/jimdo/25-i836be40.jpg"
+              alt="Jr Bees and coaches in McNeese Cowboy Stadium at night, with the lights on."
+              width={600}
+              height={450}
+              className="aspect-[4/3] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="/media/jimdo/36-i9966db5.jpg"
+              alt="Jr Bees outside AT&T Stadium at the 2018 NFL Draft."
+              width={478}
+              height={540}
+              className="aspect-[4/3] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+            <img
+              src="/media/jimdo/47-i656619a.jpg"
+              alt="Jr Bees with professional players at Houston Texans training camp."
+              width={593}
+              height={395}
+              className="aspect-[4/3] w-full object-cover"
+              loading="lazy"
+              decoding="async"
+            />
+          </div>
         </div>
       </section>
 
-      <div className="mx-auto max-w-6xl px-5 md:px-8">
-        <section className="sideline">
-          <p className="font-display text-2xl text-plum">01</p>
-          <div className="grid items-stretch gap-6 lg:grid-cols-12">
-            <Link to="/football" className="group relative min-h-80 overflow-hidden bg-ink lg:col-span-7">
-              <img
-                src="/media/practice-2016.jpg"
-                alt="Jr Bees in gold helmets and purple mesh at practice."
-                className="h-full min-h-80 w-full object-cover opacity-90 outline -outline-offset-1 outline-cream/10 transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none motion-reduce:group-hover:scale-100"
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-ink/80 p-5 text-cream">
-                <p className="font-display text-sm uppercase tracking-widest text-gold">Field</p>
-                <p className="font-display text-4xl uppercase">Football</p>
-                <p className="mt-1 max-w-md text-cream/80">Flag through 12U. Fundamentals, school, and a ride to rooms most Pop Warner teams never see.</p>
-              </div>
-            </Link>
-            <Link to="/honeybees" className="group relative min-h-80 overflow-hidden hex-field lg:col-span-5">
-              <img
-                src="/media/honeybees.jpg"
-                alt="Honey Bees with medals on the gym floor."
-                className="h-64 w-full object-cover object-top outline -outline-offset-1 outline-cream/10 transition-transform duration-300 ease-out group-hover:scale-[1.02] motion-reduce:transition-none"
-              />
-              <div className="p-5">
-                <p className="font-display text-sm uppercase tracking-widest text-gold">Floor</p>
-                <p className="font-display text-4xl uppercase">Honey Bees</p>
-                <p className="mt-2 text-cream/85">Cheer the season. Compete after it. Etiquette, sisterhood, and a stack of regional hardware.</p>
-              </div>
-            </Link>
+      <section className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-center md:px-8 md:py-16">
+        <img
+          src="/media/jimdo/11-i67d9681.jpg"
+          alt="Coach Brad Coleman on the field with another coach."
+          width={720}
+          height={1316}
+          className="aspect-[3/4] w-full object-cover object-top"
+          loading="lazy"
+          decoding="async"
+        />
+        <div>
+          <p className="font-display text-sm uppercase tracking-[0.2em] text-plum">Coach Brad</p>
+          <p className="mt-3 font-display text-7xl uppercase leading-none text-plum tabular-nums">41</p>
+          <p className="font-display text-2xl uppercase text-ink">years coaching</p>
+          <h2 className="mt-4 font-display text-5xl uppercase">Bradford Coleman</h2>
+          <p className="mt-4 text-lg text-ink">
+            Coach Brad has been president since 2007 and was inducted into the Hall of Fame in 2023. Former Jr Bees players have been in the NFL draft, and some now coach in college, high school, and the XFL.
+          </p>
+          <p className="mt-4 text-lg text-ink">
+            He is the Texas scout for the {allStateGame.name}. {allStateGame.grades} If you want a child nominated, call or text Coach Brad.
+            <PendingTag label="Official scout title to confirm" />
+            <PendingTag label="Game city and date to confirm" />
+          </p>
+          <div className="mt-6 flex flex-wrap gap-3">
+            <Button asChild tone="gold">
+              <a href={`tel:${phones.brad.tel}`}>Call Coach Brad</a>
+            </Button>
+            <Button asChild tone="quiet">
+              <a href={`sms:${phones.brad.tel}`}>Text Coach Brad</a>
+            </Button>
+            <Button asChild tone="quiet">
+              <a href={allStateGame.spotlight} target="_blank" rel="noopener noreferrer">
+                All State Game spotlight
+              </a>
+            </Button>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="sideline">
-          <div className="flex items-baseline justify-between gap-4">
-            <h2 className="font-display text-5xl uppercase">Photos</h2>
-            <Link to="/photos" className="font-display text-lg uppercase underline decoration-plum decoration-2 underline-offset-4">
-              All of them
-            </Link>
-          </div>
-          <div className="mt-5 flex gap-3 overflow-x-auto pb-2">
-            {photoTeasers.map((photo) => (
-              <Link key={photo.src} to="/photos" className="w-56 shrink-0 sm:w-64">
-                <img src={photo.src} alt={photo.alt} className="aspect-[4/3] w-full object-cover" />
-                <p className="mt-1 text-sm text-stone">{photo.caption}</p>
-              </Link>
-            ))}
-          </div>
-        </section>
-
-        <section className="sideline">
-          <p className="font-display text-2xl text-plum">02</p>
-          <div className="max-w-3xl">
-            <h2 className="font-display text-5xl uppercase sm:text-6xl">Our program will always be about the players and cheerleaders, not the plays.</h2>
-            <p className="mt-6 text-xl italic text-stone">
-              “It takes a village to raise a child. Our organization is that village.” Success, to them, is a kid knowing they did the best they were capable of.
-            </p>
-            <p className="mt-4 text-ink">
-              The door is open regardless of race, creed, or national origin. The work is sportsmanship, school, and the fundamentals — football on the field, dance and cheer on the floor.
-            </p>
-          </div>
-        </section>
-
-        <section className="sideline">
-          <p className="font-display text-2xl text-plum">03</p>
+      <section className="hex-field">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-5 py-12 md:grid-cols-2 md:px-8 md:py-16">
           <div>
-            <h2 className="font-display text-5xl uppercase">Where the kids have stood</h2>
-            <p className="mt-3 max-w-xl text-stone">From the Port Arthur News, the Beaumont Enterprise, and the association’s Facebook page.</p>
-            <ol className="mt-8 border-l-2 border-gold">
-              {milestones.map((item) => (
-                <li key={item.title} className="py-5 pl-6">
-                  <p className="font-display text-sm uppercase tracking-widest text-plum">{item.year}</p>
-                  <h3 className="mt-1 font-display text-3xl uppercase">{item.title}</h3>
-                  <p className="mt-2 max-w-2xl text-ink">{item.body}</p>
-                </li>
-              ))}
-            </ol>
-          </div>
-        </section>
-
-        <section className="sideline" id="place">
-          <p className="font-display text-2xl text-plum">04</p>
-          <div>
-            <h2 className="font-display text-5xl uppercase">Place a child</h2>
-            <p className="mt-3 max-w-xl text-stone">
-              Latest public note: they are still signing athletes 9 through 12. Younger and dance spots have existed for years. The slider tells you who to call. It does not enroll anyone.
+            <p className="font-display text-sm uppercase tracking-[0.2em] text-gold">Honeybees</p>
+            <h2 className="mt-3 font-display text-5xl uppercase">Year-round dance, founded in 2012</h2>
+            <p className="mt-4 text-lg text-cream/90">
+              The Honeybees dance year round and perform at Lamar and Port Arthur basketball games. They have won a San Antonio tournament three years in a row, gone to POP 1 nationals in Florida several times, and won a POP 1 regional in Colorado.
             </p>
-            <div className="mt-8">
-              <SquadFinder />
-            </div>
-          </div>
-        </section>
-
-        <section className="sideline">
-          <p className="font-display text-2xl text-plum">05</p>
-          <div>
-            <h2 className="font-display text-5xl uppercase">What support has actually bought</h2>
-            <p className="mt-3 max-w-xl text-stone">These amounts were in the newspaper. Call Coach Brad before you send anything.</p>
-            <div className="mt-8">
-              <GiftLadder />
-            </div>
-            <div className="mt-6">
-              <Button asChild tone="ink">
-                <Link to="/support">How to stand with them</Link>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <Button asChild tone="gold">
+                <Link to="/honeybees">Meet the Honeybees</Link>
+              </Button>
+              <Button asChild tone="line">
+                <Link to="/register">Sign up for dance</Link>
               </Button>
             </div>
           </div>
-        </section>
-
-        <section className="sideline">
-          <p className="font-display text-2xl text-plum">06</p>
-          <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-            <div>
-              <h2 className="font-display text-5xl uppercase">Come to the field</h2>
-              <p className="mt-4 text-xl">
-                {org.practice.when}
-                <span className="block font-display text-4xl uppercase text-plum">{org.practice.hours}</span>
-              </p>
-              <p className="mt-4 text-ink">
-                {org.practice.where}
-                <span className="block text-stone">{org.practice.streets}, {org.place}</span>
-              </p>
-              <a
-                href={org.practice.map}
-                className="mt-5 inline-flex min-h-11 items-center font-display text-lg uppercase underline decoration-plum decoration-2 underline-offset-4"
-              >
-                Map the campus
-              </a>
-            </div>
-            <img
-              src="/media/jr-bees-texans.jpg"
-              alt="Jr Bees players together under the tent at Texans camp."
-              className="aspect-[4/3] w-full object-cover shadow-lift outline -outline-offset-1 outline-ink/10"
-            />
-          </div>
-        </section>
-      </div>
+          <img
+            src="/media/jimdo/01-ia5b3999.jpg"
+            alt="Port Arthur Honeybees dancers with a regional champion banner and trophies."
+            width={1400}
+            height={1050}
+            className="aspect-[4/3] w-full object-cover"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </section>
     </>
   );
 }
