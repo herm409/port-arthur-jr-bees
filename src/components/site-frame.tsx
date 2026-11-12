@@ -1,17 +1,19 @@
 import { useEffect, useState, type ReactNode } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, X } from "lucide-react";
+import { Mail, MapPin, Menu, MessageSquare, Phone, X } from "lucide-react";
 import { org, phones } from "@/lib/org";
+import { pendingTagVisible, practice, revealPending } from "@/lib/facts";
 import { cn } from "@/lib/cn";
-import { PracticeBeacon } from "@/components/practice-beacon";
 import { Button } from "@/components/ui/button";
+import { Wordmark } from "@/components/wordmark";
+import { MobileCtaBar } from "@/components/mobile-cta-bar";
+import { PendingTag } from "@/components/pending-flag";
 
 const links = [
-  { to: "/football", label: "Field", note: "Football" },
-  { to: "/honeybees", label: "Floor", note: "Honey Bees" },
-  { to: "/photos", label: "Photos", note: "Pictures" },
-  { to: "/support", label: "Village", note: "Support" },
-  { to: "/register", label: "Register", note: "Sign up" },
+  { to: "/football", label: "Football" },
+  { to: "/honeybees", label: "Honeybees" },
+  { to: "/photos", label: "Photos" },
+  { to: "/register", label: "Join" },
 ] as const;
 
 export function SiteFrame({ children }: { children: ReactNode }) {
@@ -32,30 +34,16 @@ export function SiteFrame({ children }: { children: ReactNode }) {
   }, [open]);
 
   return (
-    <div className="relative min-h-screen">
-      <div className="grain" aria-hidden="true" />
+    <div className="relative min-h-screen pb-20 md:pb-0">
       <a
         href="#content"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-gold focus:px-4 focus:py-2 focus:font-display focus:uppercase"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:bg-gold focus:px-4 focus:py-2 focus:font-display focus:text-lg focus:font-extrabold focus:uppercase"
       >
         Skip to content
       </a>
-      <div className="hex-field">
-        <div className="mx-auto flex max-w-6xl flex-wrap items-center justify-between gap-x-6 gap-y-1 px-5 py-2 font-display text-sm uppercase tracking-widest md:px-8">
-          <span>
-            {org.affiliation} · {org.place}
-          </span>
-          <PracticeBeacon />
-        </div>
-      </div>
       <header className="sticky top-0 z-40 border-b border-ink/10 bg-cream">
         <div className="mx-auto flex max-w-6xl items-center justify-between gap-4 px-5 py-3 md:px-8">
-          <Link to="/" className="group block leading-none">
-            <span className="block font-display text-xs uppercase tracking-[0.22em] text-stone">Port Arthur</span>
-            <span className="block font-display text-3xl font-extrabold uppercase tracking-tight text-ink group-hover:text-plum">
-              Jr Bees
-            </span>
-          </Link>
+          <Wordmark compact />
           <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
             {links.map((link) => {
               const active = pathname === link.to;
@@ -64,26 +52,28 @@ export function SiteFrame({ children }: { children: ReactNode }) {
                   key={link.to}
                   to={link.to}
                   className={cn(
-                    "min-h-11 px-3 inline-flex flex-col justify-center",
+                    "inline-flex min-h-11 items-center px-3 font-display text-lg font-extrabold uppercase tracking-wide",
                     active ? "text-plum" : "text-ink hover:text-plum",
                   )}
                 >
-                  <span className="font-display text-lg uppercase leading-none tracking-wide">{link.label}</span>
-                  <span className="text-xs text-stone">{link.note}</span>
+                  {link.label}
                 </Link>
               );
             })}
+            <Button asChild tone="gold" className="ml-3">
+              <Link to="/donate">Donate</Link>
+            </Button>
           </nav>
-          <div className="flex items-center gap-2">
-            <Button asChild tone="gold" className="hidden sm:inline-flex">
-              <a href={`tel:${phones.brad.tel}`}>Call Coach Brad</a>
+          <div className="flex items-center gap-2 lg:hidden">
+            <Button asChild tone="gold">
+              <Link to="/donate">Donate</Link>
             </Button>
             <button
               type="button"
-              className="inline-flex size-11 items-center justify-center border border-ink/15 lg:hidden"
+              className="inline-flex size-11 items-center justify-center border border-ink/15"
               aria-expanded={open}
               aria-controls="mobile-nav"
-              onClick={() => setOpen((v) => !v)}
+              onClick={() => setOpen((value) => !value)}
             >
               {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
               <span className="sr-only">{open ? "Close menu" : "Open menu"}</span>
@@ -96,67 +86,101 @@ export function SiteFrame({ children }: { children: ReactNode }) {
               <Link
                 key={link.to}
                 to={link.to}
-                className="flex min-h-12 items-baseline justify-between border-b border-ink/10 py-2"
+                className="flex min-h-12 items-center border-b border-ink/10 font-display text-3xl font-extrabold uppercase"
               >
-                <span className="font-display text-3xl uppercase">{link.label}</span>
-                <span className="text-stone">{link.note}</span>
+                {link.label}
               </Link>
             ))}
-            <a href={`tel:${phones.brad.tel}`} className="mt-3 flex min-h-12 items-center font-display text-xl uppercase text-plum">
-              Call {phones.brad.display}
-            </a>
+            <Link
+              to="/donate"
+              className="mt-3 flex min-h-12 items-center justify-center bg-gold font-display text-2xl font-extrabold uppercase text-ink"
+            >
+              Donate
+            </Link>
           </nav>
         ) : null}
       </header>
-      <div className="overflow-hidden border-b border-ink/10 bg-ink text-cream">
-        <div className="marquee-track flex w-max">
-          {[0, 1].map((copy) => (
-            <p key={copy} className="flex shrink-0 gap-8 px-4 py-2 font-display text-sm uppercase tracking-[0.28em]" aria-hidden={copy === 1}>
-              {Array.from({ length: 6 }).map((_, i) => (
-                <span key={i}>{org.tag}</span>
-              ))}
-            </p>
-          ))}
+      <main id="content">{children}</main>
+      <SiteFooter />
+      <MobileCtaBar menuOpen={open} />
+    </div>
+  );
+}
+
+function SiteFooter() {
+  return (
+    <footer id="site-footer" className="bg-ink text-cream">
+      <div className="mx-auto grid max-w-6xl grid-cols-2 gap-x-4 gap-y-8 px-5 py-8 md:grid-cols-[1.3fr_1fr_1fr] md:px-8 md:py-12">
+        <div className="col-span-2 md:col-span-1">
+          <p className="font-display text-4xl font-extrabold uppercase leading-none">Port Arthur Jr Bees</p>
+          <p className="mt-4 max-w-sm text-cream/85">
+            A Gulf Coast Pop Warner affiliate. Port Arthur Jr Bees is a nonprofit.
+          </p>
+          <nav className="mt-4 flex flex-col" aria-label="Footer">
+            <Link to="/our-story" className="inline-flex min-h-11 items-center font-display uppercase tracking-wide">
+              Our story
+            </Link>
+            <Link to="/sponsor" className="inline-flex min-h-11 items-center font-display uppercase tracking-wide">
+              Sponsor
+            </Link>
+            <Link to="/contact" className="inline-flex min-h-11 items-center font-display uppercase tracking-wide">
+              Contact
+            </Link>
+          </nav>
+        </div>
+        <div>
+          <p className="font-display text-[14px] font-extrabold uppercase tracking-[0.18em] text-gold">Call, text, email</p>
+          <a className="mt-3 flex min-h-11 items-center gap-2 font-display text-xl uppercase" href={`tel:${phones.brad.tel}`}>
+            <Phone aria-hidden="true" className="size-4 text-gold" />
+            {phones.brad.display}
+          </a>
+          <a className="flex min-h-11 items-center gap-2 font-display text-xl uppercase" href={`sms:${phones.brad.tel}`}>
+            <MessageSquare aria-hidden="true" className="size-4 text-gold" />
+            Text Coach Brad
+          </a>
+          <a className="flex min-h-11 items-center gap-2 font-display text-xl uppercase" href={`tel:${phones.rayya.tel}`}>
+            <Phone aria-hidden="true" className="size-4 text-gold" />
+            {phones.rayya.display}
+          </a>
+          <a className="flex min-h-11 items-center gap-2 font-display text-xl uppercase" href={`sms:${phones.rayya.tel}`}>
+            <MessageSquare aria-hidden="true" className="size-4 text-gold" />
+            Text Coach Rayya
+          </a>
+          <a className="flex min-h-11 items-center gap-2" href={`mailto:${org.email}`}>
+            <Mail aria-hidden="true" className="size-4 text-gold" />
+            {org.email}
+          </a>
+        </div>
+        <div>
+          <p className="font-display text-[14px] font-extrabold uppercase tracking-[0.18em] text-gold">Find them</p>
+          <a
+            className="mt-3 flex min-h-11 items-center underline decoration-gold/70 underline-offset-4"
+            href={org.facebook}
+          >
+            Jr Bees on Facebook
+          </a>
+          <a
+            className="flex min-h-11 items-center underline decoration-gold/70 underline-offset-4"
+            href={org.honeybeesFacebook}
+          >
+            Honeybees on Facebook
+          </a>
+          {revealPending(practice) ? (
+            <div className="mt-4">
+              {pendingTagVisible(practice) ? <PendingTag /> : null}
+              <a className="mt-2 flex min-h-11 items-start gap-2" href={practice.map}>
+                <MapPin aria-hidden="true" className="mt-3 size-4 shrink-0 text-gold" />
+                <span>
+                  {practice.where}
+                  <span className="mt-1 block text-cream/75">
+                    {practice.streets}, {practice.city}
+                  </span>
+                </span>
+              </a>
+            </div>
+          ) : null}
         </div>
       </div>
-      <main id="content">{children}</main>
-      <footer className="hex-field mt-8">
-        <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 md:grid-cols-[1.4fr_1fr_1fr] md:px-8">
-          <div>
-            <p className="font-display text-5xl uppercase leading-none">Jr Bees</p>
-            <p className="mt-4 max-w-sm text-cream/85">
-              It takes a village to raise a child. This organization is that village.
-            </p>
-          </div>
-          <div>
-            <p className="font-display text-sm uppercase tracking-widest text-gold">Call</p>
-            <a className="mt-3 block min-h-11 font-display text-2xl uppercase" href={`tel:${phones.brad.tel}`}>
-              {phones.brad.display}
-              <span className="mt-1 block font-body text-base normal-case tracking-normal text-cream/75">{phones.brad.name}</span>
-            </a>
-            <a className="mt-4 block min-h-11 font-display text-2xl uppercase" href={`tel:${phones.rayya.tel}`}>
-              {phones.rayya.display}
-              <span className="mt-1 block font-body text-base normal-case tracking-normal text-cream/75">{phones.rayya.name}</span>
-            </a>
-          </div>
-          <div>
-            <p className="font-display text-sm uppercase tracking-widest text-gold">Find them</p>
-            <a className="mt-3 block underline decoration-gold/70 underline-offset-4" href={org.facebook}>
-              Facebook · PA Jr Bees
-            </a>
-            <Link to="/register" hash="medical" className="mt-3 block underline decoration-gold/70 underline-offset-4">
-              Medical history form
-            </Link>
-            <a className="mt-3 block underline decoration-gold/70 underline-offset-4" href={org.practice.map}>
-              {org.practice.where}
-              <span className="mt-1 block text-cream/75 no-underline">{org.practice.streets}</span>
-            </a>
-            <p className="mt-6 text-sm text-cream/70">
-              Facts here come from the association’s own words, public Facebook posts, the Port Arthur News, and the Beaumont Enterprise. Confirm fees and where to send money with Coach Brad before you give.
-            </p>
-          </div>
-        </div>
-      </footer>
-    </div>
+    </footer>
   );
 }
