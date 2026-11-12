@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { campaign } from "@/lib/campaign";
 import { formatUsd } from "@/lib/money";
-import { Button } from "@/components/ui/button";
+import { CashAppGive } from "@/components/cash-app-give";
 import { cn } from "@/lib/cn";
 
 export function BuildingScoreboard({ variant }: { variant: "compact" | "full" }) {
@@ -68,19 +68,10 @@ export function BuildingScoreboard({ variant }: { variant: "compact" | "full" })
 
         {variant === "full" ? <CostTable /> : null}
 
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:items-center">
-          {variant === "compact" ? (
-            <>
-              <div className="give-phone">
-                <Button asChild tone="gold" className="w-full sm:w-auto">
-                  <a href={campaign.cashAppUrl}>Give with Cash App</a>
-                </Button>
-              </div>
-              <div className="give-desktop">
-                <Button asChild tone="gold">
-                  <Link to="/donate">Donate</Link>
-                </Button>
-              </div>
+        {variant === "compact" ? (
+          <div className="mt-8">
+            <CashAppGive compact onInk lazy />
+            <p className="mt-5">
               <Link
                 to="/donate"
                 hash="cost"
@@ -88,11 +79,11 @@ export function BuildingScoreboard({ variant }: { variant: "compact" | "full" })
               >
                 See what it costs
               </Link>
-            </>
-          ) : (
-            <p className="text-[14px] text-cream/70">Cost from the {campaign.quoteSource} quote.</p>
-          )}
-        </div>
+            </p>
+          </div>
+        ) : (
+          <p className="mt-8 text-[14px] text-cream/70">Cost from the {campaign.quoteSource} quote.</p>
+        )}
       </div>
     </section>
   );

@@ -23,7 +23,12 @@ export const campaign = {
   updated: "2026-11-12",
   cashtag: "$PAJrBees",
   cashAppUrl: "https://cash.app/$PAJrBees",
-  cashAppQr: null as string | null, // [CASHAPP_QR_IMAGE] Coach Brad is making it
+  cashAppQr: "/images/cashapp-qr-pajrbees.jpg",
+  cashAppQrWebp: "/images/cashapp-qr-pajrbees.webp",
+  cashAppQrWidth: 1080,
+  cashAppQrHeight: 1362,
+  cashAppQrAlt: "Cash App QR code for Port Arthur Jr. Bees, $PAJrBees",
+  cashAppQrCaption: "Scan with your phone camera or Cash App.",
 };
 
 export function campaignGoalCents(): number {

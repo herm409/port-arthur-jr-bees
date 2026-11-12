@@ -24,6 +24,11 @@ export const Route = createFileRoute("/donate")({
 function DonatePage() {
   return (
     <article>
+      <div className="bg-cream px-5 py-8 md:px-8 md:py-10">
+        <div className="mx-auto max-w-3xl">
+          <CashAppGive lazy={false} />
+        </div>
+      </div>
       <BuildingScoreboard variant="full" />
       <div className="mx-auto max-w-3xl px-5 py-12 md:px-8">
         <h2 className="font-display text-4xl font-extrabold uppercase text-plum">{campaign.name}</h2>
@@ -33,9 +38,6 @@ function DonatePage() {
         <p className="mt-4 text-ink">
           Coach Brad's family are educators, so tutoring and after-school help are part of the plan from day one.
         </p>
-        <div className="mt-10">
-          <CashAppGive />
-        </div>
         {placeholders.buildingSitePhoto ? null : isPreview ? (
           <div className="mt-10">
             <PlaceholderTile token="[BUILDING_SITE_PHOTO]" subject="The 30x30 site" />

@@ -1,74 +1,82 @@
-import { useState } from "react";
+import { useId, useState } from "react";
 import { Check, Copy } from "lucide-react";
 import { campaign } from "@/lib/campaign";
 import { org, phones } from "@/lib/org";
-import { isPreview } from "@/lib/site-context";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/cn";
 
-export function CashAppGive() {
+export function CashAppGive({
+  compact = false,
+  onInk = false,
+  lazy = true,
+}: {
+  compact?: boolean;
+  onInk?: boolean;
+  lazy?: boolean;
+}) {
   const [copied, setCopied] = useState(false);
+  const cashtagId = useId();
 
   async function copyTag() {
     try {
       await navigator.clipboard.writeText(campaign.cashtag);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
     } catch {
-      const node = document.getElementById("cashtag");
-      if (!node) return;
-      const range = document.createRange();
-      range.selectNodeContents(node);
-      const selection = window.getSelection();
-      selection?.removeAllRanges();
-      selection?.addRange(range);
+      const node = document.getElementById(cashtagId);
+      if (node) {
+        const range = document.createRange();
+        range.selectNodeContents(node);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+      }
     }
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
   }
-
-  const qr = campaign.cashAppQr;
-  const showQrImage = typeof qr === "string" && qr.length > 0;
-  const showQrPlaceholder = qr === null && isPreview;
 
   return (
     <div>
-      <div className="give-phone">
-        <Button asChild tone="gold" className="w-full">
-          <a href={campaign.cashAppUrl}>Give with Cash App</a>
-        </Button>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          <p id="cashtag-phone" className="font-display text-2xl font-extrabold text-ink">
-            Cash App: {campaign.cashtag}
-          </p>
-          <CopyButton copied={copied} onCopy={copyTag} />
+      <div className="flex flex-col gap-5 md:flex-row md:items-start md:gap-8">
+        <div className="order-2 md:order-1">
+          <figure>
+            <div className="inline-block bg-white p-3">
+              <picture>
+                <source type="image/webp" srcSet={campaign.cashAppQrWebp} />
+                <img
+                  src={campaign.cashAppQr}
+                  alt={campaign.cashAppQrAlt}
+                  width={campaign.cashAppQrWidth}
+                  height={campaign.cashAppQrHeight}
+                  loading={lazy ? "lazy" : "eager"}
+                  decoding="async"
+                  className="block h-auto w-[250px] bg-white md:w-[280px]"
+                />
+              </picture>
+            </div>
+            <figcaption className={cn("mt-3 max-w-[280px] text-[14px]", onInk ? "text-cream/80" : "text-stone")}>
+              {campaign.cashAppQrCaption}
+            </figcaption>
+          </figure>
         </div>
-      </div>
 
-      <div className="give-desktop">
-        <div className="flex flex-col items-start gap-6 md:flex-row">
-          {showQrImage ? (
-            <div className="flex size-56 items-center justify-center bg-cream p-4">
-              <img src={qr} alt={`Cash App QR code for ${campaign.cashtag}`} width={192} height={192} />
-            </div>
-          ) : null}
-          {showQrPlaceholder ? (
-            <div className="flex size-56 items-center justify-center border-2 border-dashed border-ink/30 bg-cream p-4 text-center">
-              <p className="font-display text-[14px] font-extrabold uppercase tracking-wide text-stone">
-                [CASHAPP_QR_IMAGE]
-                <span className="mt-2 block font-body text-base font-normal normal-case tracking-normal">
-                  QR code coming soon
-                </span>
-              </p>
-            </div>
-          ) : null}
-          <div>
-            <p id="cashtag" className="digits font-display text-5xl font-extrabold text-ink">
+        <div className="order-1 flex flex-col items-stretch gap-4 md:order-2 md:items-start">
+          <Button asChild tone="gold" className="w-full min-h-11 md:w-auto">
+            <a href={campaign.cashAppUrl} target="_blank" rel="noopener">
+              Give with Cash App
+            </a>
+          </Button>
+          <div className="flex flex-wrap items-center gap-3">
+            <p
+              id={cashtagId}
+              className={cn(
+                "digits font-display font-extrabold",
+                compact ? "text-3xl" : "text-5xl",
+                onInk ? "text-gold" : "text-ink",
+              )}
+            >
               {campaign.cashtag}
             </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <CopyButton copied={copied} onCopy={copyTag} label={`Copy ${campaign.cashtag}`} />
-              <Button asChild tone="quiet">
-                <a href={campaign.cashAppUrl}>Open Cash App</a>
-              </Button>
-            </div>
+            <CopyButton copied={copied} onCopy={copyTag} onInk={onInk} label={`Copy ${campaign.cashtag}`} />
           </div>
         </div>
       </div>
@@ -77,18 +85,28 @@ export function CashAppGive() {
         {copied ? `${campaign.cashtag} copied` : ""}
       </p>
 
-      <p className="mt-8 max-w-xl text-ink">
-        Questions about giving? Call {phones.brad.shortName} at{" "}
-        <a className="inline-flex min-h-11 items-center underline decoration-plum underline-offset-4" href={`tel:${phones.brad.tel}`}>
-          {phones.brad.display}
-        </a>{" "}
-        or email{" "}
-        <a className="inline-flex min-h-11 items-center underline decoration-plum underline-offset-4" href={`mailto:${org.email}`}>
-          {org.email}
-        </a>
-        .
-      </p>
-      <p className="mt-4 text-stone">{org.name} is a nonprofit.</p>
+      {compact ? null : (
+        <>
+          <p className="mt-8 max-w-xl text-ink">
+            Questions about giving? Call {phones.brad.shortName} at{" "}
+            <a
+              className="inline-flex min-h-11 items-center underline decoration-plum underline-offset-4"
+              href={`tel:${phones.brad.tel}`}
+            >
+              {phones.brad.display}
+            </a>{" "}
+            or email{" "}
+            <a
+              className="inline-flex min-h-11 items-center underline decoration-plum underline-offset-4"
+              href={`mailto:${org.email}`}
+            >
+              {org.email}
+            </a>
+            .
+          </p>
+          <p className="mt-4 text-stone">{org.name} is a nonprofit.</p>
+        </>
+      )}
     </div>
   );
 }
@@ -96,17 +114,22 @@ export function CashAppGive() {
 function CopyButton({
   copied,
   onCopy,
+  onInk = false,
   label = "Copy",
 }: {
   copied: boolean;
   onCopy: () => void;
+  onInk?: boolean;
   label?: string;
 }) {
   return (
     <button
       type="button"
       onClick={onCopy}
-      className="btn-press inline-flex min-h-11 items-center gap-2 border-2 border-ink/20 px-4 font-display text-lg font-extrabold uppercase text-ink"
+      className={cn(
+        "btn-press inline-flex min-h-11 items-center gap-2 border-2 px-4 font-display text-lg font-extrabold uppercase",
+        onInk ? "border-cream/40 text-cream" : "border-ink/20 text-ink",
+      )}
     >
       {copied ? <Check aria-hidden="true" className="size-5" /> : <Copy aria-hidden="true" className="size-5" />}
       {copied ? "Copied" : label}

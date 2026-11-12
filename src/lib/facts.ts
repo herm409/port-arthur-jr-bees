@@ -5,6 +5,11 @@ export type PendingEntry = {
   pending: boolean;
 };
 
+export const asgCityDate = {
+  id: "asg-city-date",
+  pending: true,
+} as const satisfies PendingEntry;
+
 export const practice = {
   id: "practice",
   pending: true,

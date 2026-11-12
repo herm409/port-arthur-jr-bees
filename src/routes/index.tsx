@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { GetNominatedBlock, SpotlightProof } from "@/components/asg-block";
 import { BuildingScoreboard } from "@/components/building-scoreboard";
 import { Button } from "@/components/ui/button";
 import { Hero } from "@/components/hero";
@@ -79,31 +80,35 @@ function Home() {
           <PhotoStrip ids={homeStrip} reveal />
         </div>
       </div>
-      <ScoreboardPlate
-        reverse
-        figure="41"
-        figureLabel="Years coaching"
-        photo={<PhotoPicture id="11-i67d9681" sizes="(min-width: 768px) 58vw, 100vw" className="h-full w-full" />}
-        action={
-          <Button asChild tone="gold">
-            <Link to="/donate">Donate to 30x30</Link>
-          </Button>
-        }
-      >
-        <p>
-          Coach Brad has coached youth sports for 41 years and has led the Jr Bees as president since 2007. In 2023
-          he was inducted into the Prairie View Interscholastic League Coaches Association Hall of Fame. Former Jr
-          Bees have reached the NFL draft, and some now coach in college, high school, and the XFL.
-        </p>
-        <p className="mt-4">
-          <Link
-            to="/our-story"
-            className="inline-flex min-h-11 items-center font-display uppercase text-gold underline decoration-gold/70 underline-offset-4"
-          >
-            Our story
-          </Link>
-        </p>
-      </ScoreboardPlate>
+      <section aria-label="Coach Brad">
+        <ScoreboardPlate
+          reverse
+          figure="41"
+          figureLabel="Years coaching"
+          photo={<PhotoPicture id="11-i67d9681" sizes="(min-width: 768px) 58vw, 100vw" className="h-full w-full" />}
+          action={
+            <Button asChild tone="gold">
+              <Link to="/donate">Donate to 30x30</Link>
+            </Button>
+          }
+        >
+          <p>
+            Coach Brad has coached youth sports for 41 years and has led the Jr Bees as president since 2007. In 2023
+            he was inducted into the Prairie View Interscholastic League Coaches Association Hall of Fame. Former Jr
+            Bees have reached the NFL draft, and some now coach in college, high school, and the XFL.
+          </p>
+          <SpotlightProof />
+          <GetNominatedBlock surface="ink" />
+          <p className="mt-4">
+            <Link
+              to="/our-story"
+              className="inline-flex min-h-11 items-center font-display uppercase text-gold underline decoration-gold/70 underline-offset-4"
+            >
+              Our story
+            </Link>
+          </p>
+        </ScoreboardPlate>
+      </section>
       <section className="mx-auto max-w-3xl px-5 py-6 md:px-8 md:py-8">
         <h2 className="font-display text-4xl font-extrabold uppercase text-plum">Sponsors</h2>
         <p className="mt-4 text-ink">

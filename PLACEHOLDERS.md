@@ -6,7 +6,7 @@ Tokens the site still needs from Coach Brad or Herman. Preview builds (anything 
 | --- | --- | --- | --- |
 | Sign-up fee | How to Join card on Home and /register | Confirmed: $75 football, $90 Honeybees. Shown as copy. | Same. No $65 figure. |
 | [MEDICAL_FORM_CURRENT_URL] | How to Join card step 2, /register | Button opens JotForm 240466718637061. PENDING tag: "Season label to confirm with Coach Brad". Desktop may embed the form. | Button only. No season label. Form title stays 2025-2026. |
-| [CASHAPP_QR_IMAGE] | Cash App give flow on /donate | Dashed square: "[CASHAPP_QR_IMAGE] QR code coming soon" | Hide the square. Keep cashtag, copy button, and Open Cash App. |
+| All State Game city and date | Home Coach Brad block, /football Get nominated block | PENDING tag: "Game city and date to confirm". Do not print Dallas or a year. | Hide the tag. Keep the scout line, quote, spotlight link, and Get nominated copy. |
 | [LAMAR_TRIP_PHOTO] | /our-story#trips | Ink tile: "Lamar University" / "Photo coming" | Hide the tile. Do not use another venue's photo. |
 | [TSU_TRIP_PHOTO] | /our-story#trips | Ink tile: "Texas Southern" / "Photo coming" | Hide the tile. |
 | [COACH_BRAD_PORTRAIT] | Home Coach Brad plate, /our-story | Uses photo 11 (Coach Brad on the field) until a portrait lands | Same fallback photo 11 |
@@ -21,5 +21,7 @@ Tokens the site still needs from Coach Brad or Herman. Preview builds (anything 
 | [RAYYA_PERMISSION] | Honeybees call and text links | Number is live (from the association's own site). Token stays in code. | Same unless Herman pulls it |
 | [PHOTO_CONSENT] | All photos of kids | Photos from the public Jimdo archive. No child is named in copy, captions, or alt text. | Same |
 | Practice schedule | How to Join card, footer, /contact | Shown with a PENDING tag. Monday, Wednesday, and Thursday, 6:00 to 8:00 pm, Old Franklin Campus. | Hidden until pending is false in src/lib/facts.ts |
+
+Cash App QR: live at public/images/cashapp-qr-pajrbees.jpg (and a scaled WebP). Shown on the Home 30x30 block and at the top of /donate in preview and production.
 
 Raised figure: campaign.raised is $25 and campaign.showRaised is false. Do not turn it on until Coach Brad will keep it current.

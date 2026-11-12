@@ -1,4 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { GetNominatedBlock } from "@/components/asg-block";
 import { JoinCard } from "@/components/join-card";
 import { PhotoStrip } from "@/components/photo-strip";
 import { ages, org, phones, values } from "@/lib/org";
@@ -44,6 +45,9 @@ function FootballPage() {
           <Button asChild tone="quiet">
             <a href={org.facebook}>Jr Bees on Facebook</a>
           </Button>
+        </div>
+        <div className="mt-10">
+          <GetNominatedBlock surface="cream" />
         </div>
       </div>
       <div className="px-5 pb-10 md:px-8">
