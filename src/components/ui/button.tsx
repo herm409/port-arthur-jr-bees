@@ -4,15 +4,17 @@ import type { ButtonHTMLAttributes } from "react";
 import { cn } from "@/lib/cn";
 
 const buttonStyles = cva(
-  "inline-flex min-h-11 items-center justify-center gap-2 px-5 font-display text-lg font-bold uppercase tracking-wide transition-[transform,background-color,box-shadow,color] duration-150 ease-out active:translate-y-px active:shadow-press disabled:pointer-events-none disabled:opacity-50",
+  "btn-press inline-flex min-h-11 items-center justify-center gap-2 px-5 font-display text-lg font-extrabold uppercase tracking-wide transition-[transform,background-color,box-shadow,color] duration-150 ease-out disabled:pointer-events-none disabled:opacity-50",
   {
     variants: {
       tone: {
-        gold: "bg-gold text-ink shadow-lift hover:bg-gold/90",
-        plum: "bg-plum text-cream shadow-lift hover:bg-plum/90",
-        ink: "bg-ink text-cream shadow-lift hover:bg-ink/90",
-        line: "bg-transparent text-cream shadow-line hover:bg-cream/10",
-        quiet: "bg-transparent text-ink shadow-quiet hover:bg-ink/5",
+        gold: "bg-gold text-ink hover:bg-gold/90",
+        outline:
+          "border-2 border-cream bg-transparent text-cream hover:bg-cream/10",
+        ink: "bg-ink text-cream hover:bg-ink/90",
+        quiet:
+          "border-2 border-ink/25 bg-transparent text-ink hover:bg-ink/5",
+        plum: "bg-plum text-cream hover:bg-plum/90",
       },
     },
     defaultVariants: { tone: "gold" },

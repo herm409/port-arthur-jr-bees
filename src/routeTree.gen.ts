@@ -10,15 +10,36 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as SplatRouteImport } from './routes/$'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as DonateRouteImport } from './routes/donate'
 import { Route as FootballRouteImport } from './routes/football'
 import { Route as HoneybeesRouteImport } from './routes/honeybees'
+import { Route as JoinRouteImport } from './routes/join'
+import { Route as OurStoryRouteImport } from './routes/our-story'
 import { Route as PhotosRouteImport } from './routes/photos'
 import { Route as RegisterRouteImport } from './routes/register'
+import { Route as SponsorRouteImport } from './routes/sponsor'
 import { Route as SupportRouteImport } from './routes/support'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SplatRoute = SplatRouteImport.update({
+  id: '/$',
+  path: '/$',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DonateRoute = DonateRouteImport.update({
+  id: '/donate',
+  path: '/donate',
   getParentRoute: () => rootRouteImport,
 } as any)
 const FootballRoute = FootballRouteImport.update({
@@ -31,6 +52,16 @@ const HoneybeesRoute = HoneybeesRouteImport.update({
   path: '/honeybees',
   getParentRoute: () => rootRouteImport,
 } as any)
+const JoinRoute = JoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OurStoryRoute = OurStoryRouteImport.update({
+  id: '/our-story',
+  path: '/our-story',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PhotosRoute = PhotosRouteImport.update({
   id: '/photos',
   path: '/photos',
@@ -41,6 +72,11 @@ const RegisterRoute = RegisterRouteImport.update({
   path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
+const SponsorRoute = SponsorRouteImport.update({
+  id: '/sponsor',
+  path: '/sponsor',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SupportRoute = SupportRouteImport.update({
   id: '/support',
   path: '/support',
@@ -49,51 +85,104 @@ const SupportRoute = SupportRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/football': typeof FootballRoute
   '/honeybees': typeof HoneybeesRoute
+  '/join': typeof JoinRoute
+  '/our-story': typeof OurStoryRoute
   '/photos': typeof PhotosRoute
   '/register': typeof RegisterRoute
+  '/sponsor': typeof SponsorRoute
   '/support': typeof SupportRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/football': typeof FootballRoute
   '/honeybees': typeof HoneybeesRoute
+  '/join': typeof JoinRoute
+  '/our-story': typeof OurStoryRoute
   '/photos': typeof PhotosRoute
   '/register': typeof RegisterRoute
+  '/sponsor': typeof SponsorRoute
   '/support': typeof SupportRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/$': typeof SplatRoute
+  '/contact': typeof ContactRoute
+  '/donate': typeof DonateRoute
   '/football': typeof FootballRoute
   '/honeybees': typeof HoneybeesRoute
+  '/join': typeof JoinRoute
+  '/our-story': typeof OurStoryRoute
   '/photos': typeof PhotosRoute
   '/register': typeof RegisterRoute
+  '/sponsor': typeof SponsorRoute
   '/support': typeof SupportRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/football' | '/honeybees' | '/photos' | '/register' | '/support'
+    | '/'
+    | '/$'
+    | '/contact'
+    | '/donate'
+    | '/football'
+    | '/honeybees'
+    | '/join'
+    | '/our-story'
+    | '/photos'
+    | '/register'
+    | '/sponsor'
+    | '/support'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/football' | '/honeybees' | '/photos' | '/register' | '/support'
+  to:
+    | '/'
+    | '/$'
+    | '/contact'
+    | '/donate'
+    | '/football'
+    | '/honeybees'
+    | '/join'
+    | '/our-story'
+    | '/photos'
+    | '/register'
+    | '/sponsor'
+    | '/support'
   id:
     | '__root__'
     | '/'
+    | '/$'
+    | '/contact'
+    | '/donate'
     | '/football'
     | '/honeybees'
+    | '/join'
+    | '/our-story'
     | '/photos'
     | '/register'
+    | '/sponsor'
     | '/support'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SplatRoute: typeof SplatRoute
+  ContactRoute: typeof ContactRoute
+  DonateRoute: typeof DonateRoute
   FootballRoute: typeof FootballRoute
   HoneybeesRoute: typeof HoneybeesRoute
+  JoinRoute: typeof JoinRoute
+  OurStoryRoute: typeof OurStoryRoute
   PhotosRoute: typeof PhotosRoute
   RegisterRoute: typeof RegisterRoute
+  SponsorRoute: typeof SponsorRoute
   SupportRoute: typeof SupportRoute
 }
 
@@ -104,6 +193,27 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/$': {
+      id: '/$'
+      path: '/$'
+      fullPath: '/$'
+      preLoaderRoute: typeof SplatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/donate': {
+      id: '/donate'
+      path: '/donate'
+      fullPath: '/donate'
+      preLoaderRoute: typeof DonateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/football': {
@@ -120,6 +230,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HoneybeesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/join': {
+      id: '/join'
+      path: '/join'
+      fullPath: '/join'
+      preLoaderRoute: typeof JoinRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/our-story': {
+      id: '/our-story'
+      path: '/our-story'
+      fullPath: '/our-story'
+      preLoaderRoute: typeof OurStoryRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/photos': {
       id: '/photos'
       path: '/photos'
@@ -134,6 +258,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/sponsor': {
+      id: '/sponsor'
+      path: '/sponsor'
+      fullPath: '/sponsor'
+      preLoaderRoute: typeof SponsorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/support': {
       id: '/support'
       path: '/support'
@@ -146,10 +277,16 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SplatRoute: SplatRoute,
+  ContactRoute: ContactRoute,
+  DonateRoute: DonateRoute,
   FootballRoute: FootballRoute,
   HoneybeesRoute: HoneybeesRoute,
+  JoinRoute: JoinRoute,
+  OurStoryRoute: OurStoryRoute,
   PhotosRoute: PhotosRoute,
   RegisterRoute: RegisterRoute,
+  SponsorRoute: SponsorRoute,
   SupportRoute: SupportRoute,
 }
 export const routeTree = rootRouteImport

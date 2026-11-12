@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://port-arthur-jr-bees.netlify.app/sitemap.xml
