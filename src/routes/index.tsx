@@ -3,8 +3,8 @@ import { Button } from "@/components/ui/button";
 import { FundMeter } from "@/components/fund-meter";
 import { JoinCard } from "@/components/join-card";
 import { PendingTag } from "@/components/pending-tag";
-import { allStateGame } from "@/lib/campaign";
-import { org, pageHead, phones } from "@/lib/org";
+import { AsgNominate, AsgSpotlight } from "@/components/asg-block";
+import { org, pageHead } from "@/lib/org";
 
 export const Route = createFileRoute("/")({
   head: () =>
@@ -99,15 +99,20 @@ function Home() {
       </section>
 
       <section className="mx-auto grid max-w-6xl gap-8 px-5 py-12 md:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)] md:items-center md:px-8 md:py-16">
-        <img
-          src="/media/jimdo/11-i67d9681.jpg"
-          alt="Coach Brad Coleman on the field with another coach."
-          width={720}
-          height={1316}
-          className="aspect-[3/4] w-full object-cover object-top"
-          loading="lazy"
-          decoding="async"
-        />
+        <figure>
+          <img
+            src="/media/jimdo/11-i67d9681.jpg"
+            alt="Coach Brad Coleman on the field with another coach."
+            width={720}
+            height={1316}
+            className="aspect-[3/4] w-full object-cover object-top"
+            loading="lazy"
+            decoding="async"
+          />
+          <figcaption className="mt-2 text-sm text-stone">
+            <PendingTag label="Coach Lovie name in this photo to confirm with Herman" />
+          </figcaption>
+        </figure>
         <div>
           <p className="font-display text-sm uppercase tracking-[0.2em] text-plum">Coach Brad</p>
           <p className="mt-3 font-display text-7xl uppercase leading-none text-plum tabular-nums">41</p>
@@ -116,22 +121,13 @@ function Home() {
           <p className="mt-4 text-lg text-ink">
             Coach Brad has been president since 2007 and was inducted into the Hall of Fame in 2023. Former Jr Bees players have been in the NFL draft, and some now coach in college, high school, and the XFL.
           </p>
-          <p className="mt-4 text-lg text-ink">
-            He is the Texas scout for the {allStateGame.name}. {allStateGame.grades} If you want a child nominated, call or text Coach Brad.
-            <PendingTag label="Official scout title to confirm" />
-            <PendingTag label="Game city and date to confirm" />
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild tone="gold">
-              <a href={`tel:${phones.brad.tel}`}>Call Coach Brad</a>
-            </Button>
-            <Button asChild tone="quiet">
-              <a href={`sms:${phones.brad.tel}`}>Text Coach Brad</a>
-            </Button>
-            <Button asChild tone="quiet">
-              <a href={allStateGame.spotlight} target="_blank" rel="noopener noreferrer">
-                All State Game spotlight
-              </a>
+          <AsgSpotlight />
+          <div className="mt-8 border-t border-ink/10 pt-6">
+            <AsgNominate />
+          </div>
+          <div className="mt-6">
+            <Button asChild tone="plum">
+              <Link to="/donate">Donate to 30x30</Link>
             </Button>
           </div>
         </div>

@@ -34,7 +34,7 @@ function RegisterPage() {
           <PendingTag label={medicalForm.pendingNote} />
         </p>
         <div className="mt-6">
-          <Button asChild tone="plum">
+          <Button asChild tone="plum" className="w-full sm:w-auto">
             <a href={medicalForm.src} target="_blank" rel="noopener noreferrer">
               Fill out the medical form
             </a>

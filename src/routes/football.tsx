@@ -1,7 +1,8 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { PendingTag } from "@/components/pending-tag";
-import { allStateGame, fees } from "@/lib/campaign";
+import { fees } from "@/lib/campaign";
+import { AsgNominate, AsgSpotlight } from "@/components/asg-block";
 import { pageHead, phones, practice } from "@/lib/org";
 
 export const Route = createFileRoute("/football")({
@@ -71,25 +72,8 @@ function FootballPage() {
 
       <section className="bg-ink text-cream">
         <div className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
-          <h2 className="font-display text-5xl uppercase">Get nominated for the All State Game</h2>
-          <p className="mt-4 max-w-2xl text-lg text-cream/90">
-            Coach Brad is the Texas scout for the {allStateGame.name}. {allStateGame.grades} If you want a child nominated, call or text him.
-            <PendingTag label="Official scout title to confirm" />
-            <PendingTag label="Game city and date to confirm" />
-          </p>
-          <div className="mt-6 flex flex-wrap gap-3">
-            <Button asChild tone="gold">
-              <a href={`tel:${phones.brad.tel}`}>Call Coach Brad</a>
-            </Button>
-            <Button asChild tone="line">
-              <a href={`sms:${phones.brad.tel}`}>Text Coach Brad</a>
-            </Button>
-            <Button asChild tone="line">
-              <a href={allStateGame.spotlight} target="_blank" rel="noopener noreferrer">
-                Read the spotlight
-              </a>
-            </Button>
-          </div>
+          <AsgNominate onInk headingLevel={2} />
+          <AsgSpotlight onInk />
         </div>
       </section>
 

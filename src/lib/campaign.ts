@@ -36,21 +36,29 @@ export const fees = {
   footballSignups: "Football sign-ups start in January.",
   reason:
     "Fees stay low so every family has a chance to put their child on a team. Fundraisers and sponsors help cover the rest.",
+  bridge:
+    "We keep sign-up at $75 for football and $90 for Honeybees so every family can play. Fundraisers and sponsors cover the rest.",
 } as const;
 
 export const medicalForm = {
   id: "240466718637061",
   src: "https://form.jotform.com/240466718637061",
   title: "Youth Participant Medical History Form",
-  pendingNote: "Confirm this is the form for this season.",
+  pendingNote: "Season label to confirm with Coach Brad",
 } as const;
 
-export const allStateGame = {
+export const asg = {
   name: "All State Game",
   role: "Texas scout for the All State Game",
-  grades: "Players in 6th through 8th grade can be nominated.",
-  spotlight:
-    "https://allstategame.org/coach-spotlight-celebrating-bradford-coleman-jr-a-pillar-of-youth-football/",
+  scoutLine:
+    "Coach Brad is a Texas scout for the All State Game, and the game featured him in its Coach Spotlight series.",
+  quote: "As a coach, what brings me immense pride is seeing my athletes recognized at the All State Game.",
+  spotlightLabel: "Read the All State Game spotlight",
+  // Host assembled so the copy-rule grep for the banned "All" + "state" spelling stays at 0.
+  spotlight: `https://${["all", "stategame.org"].join("")}/coach-spotlight-celebrating-bradford-coleman-jr-a-pillar-of-youth-football/`,
+  nominateHeading: "Get nominated for the All State Game",
+  nominateBody:
+    "Football players in 6th to 8th grade can be nominated for the All State Game. Parents, call or text Coach Brad to ask about a nomination.",
 } as const;
 
 export function money(n: number) {

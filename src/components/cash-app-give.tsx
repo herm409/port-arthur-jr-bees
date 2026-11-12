@@ -35,7 +35,7 @@ export function CashAppGive({ priority = false }: { priority?: boolean }) {
         </div>
         <p className="text-cream/80">{cashApp.qrCaption}</p>
       </div>
-      <div className="order-2 w-full max-w-[240px] bg-white p-3 sm:order-1 sm:w-[220px] sm:max-w-none">
+      <div className="order-2 w-full max-w-[280px] bg-white p-3 sm:order-1 sm:w-[268px] sm:max-w-none sm:shrink-0">
         <img
           src={cashApp.qrJpg}
           alt={cashApp.qrAlt}

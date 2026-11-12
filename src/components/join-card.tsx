@@ -2,7 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { PendingTag } from "@/components/pending-tag";
 import { fees } from "@/lib/campaign";
-import { phones, practice } from "@/lib/org";
+import { org, phones, practice } from "@/lib/org";
 
 export function JoinCard() {
   return (
@@ -50,6 +50,17 @@ export function JoinCard() {
             Medical form
           </Link>
         </Button>
+      </div>
+      <div className="mt-10 border-t border-ink/10 pt-8">
+        <p className="max-w-2xl text-lg text-ink">{fees.bridge}</p>
+        <div className="mt-4 flex flex-col gap-3 sm:flex-row">
+          <Button asChild tone="quiet">
+            <a href={`mailto:${org.email}?subject=Sponsoring%20the%20Jr%20Bees`}>Sponsor a season</a>
+          </Button>
+          <Button asChild tone="gold">
+            <Link to="/donate">Give to 30x30</Link>
+          </Button>
+        </div>
       </div>
     </section>
   );

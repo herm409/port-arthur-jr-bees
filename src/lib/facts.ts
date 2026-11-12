@@ -44,7 +44,7 @@ export const facts = {
   },
   medicalSeason: {
     id: "medicalSeason",
-    text: "Confirm this is the medical form for this season.",
+    text: "Season label to confirm with Coach Brad.",
     pending: true,
     where: "Join",
   },
@@ -54,8 +54,8 @@ export const facts = {
     pending: true,
     where: "Home, Football",
   },
-  allStateWhenWhere: {
-    id: "allStateWhenWhere",
+  asgWhenWhere: {
+    id: "asgWhenWhere",
     text: "Game city and date to confirm.",
     pending: true,
     where: "Home, Football",
