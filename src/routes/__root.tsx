@@ -16,7 +16,7 @@ export const Route = createRootRoute({
       {
         name: "description",
         content:
-          "Port Arthur Jr Bees and Honey Bees — Gulf Coast Pop Warner football and dance. Register a child or stand with the village.",
+          "Port Arthur Jr Bees and Honeybees. A nonprofit Gulf Coast Pop Warner football and dance program in Port Arthur, Texas.",
       },
     ],
     links: [
@@ -32,7 +32,7 @@ export const Route = createRootRoute({
       },
       {
         rel: "stylesheet",
-        href: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,460;0,9..144,620;1,9..144,460&display=swap",
+        href: "https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;700;800&family=Libre+Franklin:ital,wght@0,400;0,500;0,700;1,400&display=swap",
       },
     ],
   }),

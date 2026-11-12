@@ -5,3 +5,12 @@
 [build.environment]
   NODE_VERSION = "22"
   NPM_FLAGS = "--include=dev"
+
+[context.production.environment]
+  VITE_SITE_CONTEXT = "production"
+
+[context.deploy-preview.environment]
+  VITE_SITE_CONTEXT = "preview"
+
+[context.branch-deploy.environment]
+  VITE_SITE_CONTEXT = "preview"
