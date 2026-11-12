@@ -40,6 +40,9 @@ function Home() {
             <Button asChild tone="quiet">
               <Link to="/support">Back the village</Link>
             </Button>
+            <Button asChild tone="quiet">
+              <Link to="/register" hash="medical">Medical form</Link>
+            </Button>
           </div>
         </div>
         <div className="lg:col-span-7">

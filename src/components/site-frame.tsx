@@ -11,7 +11,7 @@ const links = [
   { to: "/honeybees", label: "Floor", note: "Honey Bees" },
   { to: "/photos", label: "Photos", note: "Pictures" },
   { to: "/support", label: "Village", note: "Support" },
-  { to: "/register", label: "Register", note: "Call sheet" },
+  { to: "/register", label: "Register", note: "Sign up" },
 ] as const;
 
 export function SiteFrame({ children }: { children: ReactNode }) {
@@ -144,6 +144,9 @@ export function SiteFrame({ children }: { children: ReactNode }) {
             <a className="mt-3 block underline decoration-gold/70 underline-offset-4" href={org.facebook}>
               Facebook · PA Jr Bees
             </a>
+            <Link to="/register" hash="medical" className="mt-3 block underline decoration-gold/70 underline-offset-4">
+              Medical history form
+            </Link>
             <a className="mt-3 block underline decoration-gold/70 underline-offset-4" href={org.practice.map}>
               {org.practice.where}
               <span className="mt-1 block text-cream/75 no-underline">{org.practice.streets}</span>
