@@ -19,7 +19,7 @@ export function CallSheet({ initialAge, initialSide }: { initialAge: number; ini
     spot.call === "brad" ? phones.brad : spot.call === "rayya" ? phones.rayya : null;
   const interest =
     side === "football" ? "Jr Bees football" : side === "dance" ? "the Honey Bees" : "football and the Honey Bees";
-  const script = `Hi, this is ${parent.trim() || "[your name]"}. I’m calling about ${child.trim() || "[child’s name]"}, age ${age}. We’re interested in ${interest}. We can make practice Monday, Wednesday, and Thursday, 6 to 8, at the old Franklin campus.`;
+  const script = `Hi, this is ${parent.trim() || "[your name]"}. I’m calling about ${child.trim() || "[child’s name]"}, age ${age}. We’re interested in ${interest}. We can make practice Monday, Wednesday, and Thursday, 6 to 8, at the Old Franklin Campus.`;
 
   return (
     <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
@@ -27,8 +27,7 @@ export function CallSheet({ initialAge, initialSide }: { initialAge: number; ini
         className="border border-ink/10 bg-cream p-5 sm:p-7"
         onSubmit={(event) => event.preventDefault()}
       >
-        <p className="font-display text-sm uppercase tracking-widest text-stone">Nothing is stored</p>
-        <h2 className="mt-2 font-display text-4xl uppercase">Say this when they pick up</h2>
+        <h2 className="font-display text-4xl uppercase">Say this when they pick up</h2>
         <label className="mt-6 block">
           <span className="font-display text-sm uppercase tracking-widest text-stone">Your name</span>
           <input
@@ -104,7 +103,7 @@ export function CallSheet({ initialAge, initialSide }: { initialAge: number; ini
           )}
         </div>
         <p className="mt-6 text-sm text-cream/75">
-          This script never leaves this page. Have a birthdate and the school ready. Ask which paperwork this season wants — don’t trust an old QR code.
+          Have the child’s birthdate and school ready when you call.
         </p>
       </div>
     </div>

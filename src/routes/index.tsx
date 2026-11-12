@@ -31,7 +31,7 @@ function Home() {
             <span className="block text-plum">is the roster.</span>
           </h1>
           <p className="mt-6 max-w-md text-xl text-ink">
-            Football and Honey Bees dance for kids in this city. {org.affiliation}. Not a clinic. A sideline that has been here since the mid-1980s.
+            Football and Honey Bees in Port Arthur. {org.affiliation}. The program has been here since the mid-1980s.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild tone="plum">
@@ -53,9 +53,9 @@ function Home() {
       <section className="border-y border-ink/10">
         <div className="mx-auto grid max-w-6xl sm:grid-cols-3">
           {[
-            ["Since the mid-80s", "Coach Brad’s sideline, presidency since 2007."],
-            ["Players, not plays", "Their sentence. Hard work, a decent attitude, a little fun."],
-            ["Two doors", "The field is football. The floor is Honey Bees."],
+            ["Since the mid-80s", "Coach Brad has been with the Jr Bees since then, and president since 2007."],
+            ["The kids", "Hard work, a decent attitude, and a little fun."],
+            ["Football and dance", "Jr Bees play. Honey Bees cheer and compete."],
           ].map(([title, body]) => (
             <div key={title} className="border-b border-ink/10 px-5 py-6 sm:border-b-0 sm:border-r sm:last:border-r-0 md:px-8">
               <p className="font-display text-2xl uppercase">{title}</p>
@@ -118,7 +118,7 @@ function Home() {
           <div className="max-w-3xl">
             <h2 className="font-display text-5xl uppercase sm:text-6xl">Our program will always be about the players and cheerleaders, not the plays.</h2>
             <p className="mt-6 text-xl italic text-stone">
-              “It takes a village to raise a child. Our organization is that village.” They wrote that. Success, in their words, is a kid knowing they did the best they were capable of.
+              “It takes a village to raise a child. Our organization is that village.” Success, to them, is a kid knowing they did the best they were capable of.
             </p>
             <p className="mt-4 text-ink">
               The door is open regardless of race, creed, or national origin. The work is sportsmanship, school, and the fundamentals — football on the field, dance and cheer on the floor.
@@ -130,7 +130,7 @@ function Home() {
           <p className="font-display text-2xl text-plum">03</p>
           <div>
             <h2 className="font-display text-5xl uppercase">Where the kids have stood</h2>
-            <p className="mt-3 max-w-xl text-stone">Not a trophy case we invented. A public record: newspapers, the Enterprise, and the association’s own posts.</p>
+            <p className="mt-3 max-w-xl text-stone">From the Port Arthur News, the Beaumont Enterprise, and the association’s Facebook page.</p>
             <ol className="mt-8 border-l-2 border-gold">
               {milestones.map((item) => (
                 <li key={item.title} className="py-5 pl-6">
@@ -160,7 +160,7 @@ function Home() {
           <p className="font-display text-2xl text-plum">05</p>
           <div>
             <h2 className="font-display text-5xl uppercase">What support has actually bought</h2>
-            <p className="mt-3 max-w-xl text-stone">Tap a number. These are reported costs, not a live thermometer and not a checkout.</p>
+            <p className="mt-3 max-w-xl text-stone">These amounts were in the newspaper. Call Coach Brad before you send anything.</p>
             <div className="mt-8">
               <GiftLadder />
             </div>

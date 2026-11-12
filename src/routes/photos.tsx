@@ -35,7 +35,7 @@ function PhotosPage() {
     <article className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
       <h1 className="font-display text-6xl uppercase sm:text-7xl">Photos</h1>
       <p className="mt-4 max-w-2xl text-xl text-stone">
-        Football and Honey Bees. These pictures were on the association’s earlier website.
+        Football and Honey Bees.
       </p>
 
       {albums.map((album) => (

@@ -45,10 +45,10 @@ function HoneyPage() {
           <div className="max-w-3xl">
             <h2 className="font-display text-5xl uppercase">Sports is the window</h2>
             <p className="mt-4 text-xl">
-              “We use sports as the window, but we try to educate the girls. We have etiquette classes and other things we use to enhance them.” That’s Brooke, to the Port Arthur News — not a brochure rewrite.
+              “We use sports as the window, but we try to educate the girls. We have etiquette classes and other things we use to enhance them.” — Brooke Coleman, Port Arthur News
             </p>
             <p className="mt-4 text-lg text-stone">
-              In 2026 the Honey Bees were back at Memorial High School’s Black History program, learning what sisterhood, loyalty, and family have meant in Divine Nine history. The floor is a classroom that happens to hit a formation.
+              In 2026 the Honey Bees were back at Memorial High School’s Black History program.
             </p>
           </div>
         </section>

@@ -8,7 +8,7 @@ export const org = {
   practice: {
     when: "Monday, Wednesday, and Thursday",
     hours: "6:00–8:00 pm",
-    where: "Old Franklin campus",
+    where: "Old Franklin Campus",
     streets: "Thomas Boulevard & Mobile Avenue",
     map: "https://maps.google.com/?q=Thomas+Boulevard+and+Mobile+Avenue,+Port+Arthur,+TX",
   },
@@ -34,28 +34,28 @@ export const frames = [
     src: "/media/bees-enterprise.jpg",
     alt: "Port Arthur Jr Bees players in purple and gold honeycomb jerseys pose on the field at a Houston Texans practice, the white bubble behind them.",
     place: "Texans camp",
-    line: "JR. BEES across the chest. Hex in the fabric.",
+    line: "Jr Bees at Houston Texans practice.",
     credit: "Beaumont Enterprise / Jr Bees",
   },
   {
     src: "/media/honeybees.jpg",
     alt: "Port Arthur Honey Bees dancers and coaches in purple shirts with medals and trophies on a gym floor.",
     place: "Honey Bees",
-    line: "Regional champions. The floor, not a backdrop.",
+    line: "Regional champions, 2021.",
     credit: "Brooke Coleman / Port Arthur News, 2021",
   },
   {
     src: "/media/practice-2016.jpg",
     alt: "A coach watches Jr Bees players in gold helmets and purple mesh jerseys practice a tackle drill.",
     place: "Practice",
-    line: "Gold helmets. Purple mesh. The actual work.",
+    line: "Practice, 2016.",
     credit: "Port Arthur News, 2016",
   },
   {
     src: "/media/jr-bees-texans.jpg",
     alt: "Jr Bees players in honeycomb jerseys sit together in a shaded VIP tent at Texans training camp.",
     place: "VIP tent",
-    line: "Up close, on a pro sideline, still kids.",
+    line: "Texans camp, 2022.",
     credit: "Port Arthur News, 2022",
   },
 ] as const;
@@ -96,7 +96,7 @@ export function placeAthlete(age: number, side: Side): Placement {
       football:
         "Ages 9 through 12 are who the Facebook page said they are still placing. 10U is the squad. Practice is Mon, Wed, Thu, 6 to 8.",
       dance:
-        "Girls this age have competed as Junior Peewee after they cheer the football season. Coach Rayya makes the cut, not a form.",
+        "Girls this age have competed as Junior Peewee after they cheer the football season. Coach Rayya places them.",
       call: side === "dance" ? "rayya" : side === "football" ? "brad" : "both",
     };
   }
@@ -137,7 +137,7 @@ export function practiceLabel(now: Date): { status: string; detail: string } {
   const end = 20 * 60;
 
   if (days.includes(weekday) && mins >= start && mins < end) {
-    return { status: "On the field now", detail: "Old Franklin campus · until 8 pm" };
+    return { status: "On the field now", detail: "Old Franklin Campus · until 8 pm" };
   }
   if (days.includes(weekday) && mins < start) {
     return { status: "Practice tonight", detail: "6 to 8 pm · Thomas & Mobile" };
@@ -155,10 +155,10 @@ export function practiceLabel(now: Date): { status: string; detail: string } {
     const name = seq[(i + step) % 7] ?? "Mon";
     if (days.includes(name)) {
       const when = step === 1 ? "tomorrow" : (names[name] ?? name);
-      return { status: `Next practice ${when}`, detail: "6 to 8 pm · old Franklin campus" };
+      return { status: `Next practice ${when}`, detail: "6 to 8 pm · Old Franklin Campus" };
     }
   }
-  return { status: "Next practice Monday", detail: "6 to 8 pm · old Franklin campus" };
+  return { status: "Next practice Monday", detail: "6 to 8 pm · Old Franklin Campus" };
 }
 
 export const milestones = [
@@ -209,7 +209,7 @@ export const gifts = [
   {
     id: "pads",
     amount: "$200",
-    title: "Gear, not a banner",
+    title: "Gear",
     body: "Helmets, jerseys, and shoulder pads are what sponsors have actually bought. J.K. Chevrolet’s years of that work are why kids show up dressed like a team.",
   },
   {

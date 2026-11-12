@@ -9,7 +9,7 @@ export const Route = createFileRoute("/football")({
       {
         name: "description",
         content:
-          "Port Arthur Jr Bees football. Gulf Coast Pop Warner. Practice Monday, Wednesday, Thursday at the old Franklin campus.",
+          "Port Arthur Jr Bees football. Gulf Coast Pop Warner. Practice Monday, Wednesday, and Thursday at the Old Franklin Campus.",
       },
     ],
   }),
@@ -36,7 +36,7 @@ function FootballPage() {
               <span className="block text-plum">work.</span>
             </h1>
             <p className="mt-6 max-w-md text-xl">
-              Jr Bees football is Gulf Coast Pop Warner. The point is a better athlete and a better classmate — Coach Brad’s line, not a slogan shop.
+              Jr Bees football is Gulf Coast Pop Warner. Coach Brad wants a better athlete and a better student.
             </p>
           </div>
           <img
@@ -99,14 +99,14 @@ function FootballPage() {
             The association has said former players reached the NFL draft, and some now coach in college, high school, or the XFL. In public posts, quarterback Kamron Rivers and receiver Kenyon Rivers — both former Jr Bees — were at the Houston Texans coaches clinic in the Bubble on June 14, 2025. Coach Brad called it his 13th year at that clinic.
           </p>
           <p className="mt-4 text-lg">
-            The rooms in between are part of the education: Lamar University’s sideline, a hi-five line, Texans camp, a 49ers stadium visit. “Go big red” on the page is the Cardinals, not a second uniform. Home colors stay purple and gold.
+            Families have taken the kids to Lamar games, Texans camp, and a 49ers stadium visit. Home colors are purple and gold.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Button asChild tone="gold">
               <a href={`tel:${phones.brad.tel}`}>Call {phones.brad.display}</a>
             </Button>
             <Button asChild tone="quiet">
-              <Link to="/register" search={{ age: 10, side: "football" }}>Build a call sheet</Link>
+              <Link to="/register" search={{ age: 10, side: "football" }}>Sign up</Link>
             </Button>
           </div>
         </div>

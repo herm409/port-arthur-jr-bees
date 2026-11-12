@@ -28,7 +28,7 @@ function SupportPage() {
             <span className="block text-plum">they can see you.</span>
           </h1>
           <p className="mt-6 text-xl">
-            This is not a donate button that pretends to be a bank. It is the honest menu: gear, travel, or your actual presence. Money moves through Coach Brad, not through this page.
+            Gear, a trip, or your time. Call Coach Brad before you send money.
           </p>
         </div>
       </header>
@@ -61,7 +61,7 @@ function SupportPage() {
           <div>
             <h2 className="font-display text-3xl uppercase">Time</h2>
             <p className="mt-3">
-              Practice is the volunteer job that matters: Mondays, Wednesdays, Thursdays, 6 to 8, old Franklin campus. Chain-gang, snacks, a ride, a parent who stays. Joseph Guillory once put it plain — the program needs the community in the relationship, not only the kids dropped at the curb.
+              Practice is the volunteer job: Mondays, Wednesdays, and Thursdays, 6 to 8, at the Old Franklin Campus. Chain gang, snacks, a ride, or a parent who stays.
             </p>
           </div>
         </div>

@@ -36,7 +36,7 @@ function RegisterPage() {
     <article className="mx-auto max-w-6xl px-5 py-12 md:px-8 md:py-16">
       <h1 className="max-w-3xl font-display text-6xl uppercase sm:text-7xl">Sign up</h1>
       <p className="mt-5 max-w-2xl text-xl text-stone">
-        Call first. Practice is {org.practice.when.toLowerCase()}, {org.practice.hours}, at the {org.practice.where.toLowerCase()}.
+        Call first. Practice is {org.practice.when}, {org.practice.hours}, at the {org.practice.where}, {org.practice.streets}.
       </p>
       <div className="mt-10">
         <CallSheet key={`${age}-${side}`} initialAge={age} initialSide={side} />
@@ -69,7 +69,7 @@ function RegisterPage() {
       <section id="medical" className="mt-16 border-t border-ink/10 pt-10">
         <h2 className="font-display text-4xl uppercase sm:text-5xl">Medical history form</h2>
         <p className="mt-3 max-w-2xl text-lg">
-          This is the Pop Warner form for the 2025–2026 season. A parent or guardian fills it out. It goes to Jotform, the same form that was on the old site.
+          A parent or guardian fills this out for the 2025–2026 season.
         </p>
         <div className="mt-6 border border-ink/10 bg-white">
           <MedicalForm />

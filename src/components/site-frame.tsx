@@ -125,7 +125,7 @@ export function SiteFrame({ children }: { children: ReactNode }) {
           <div>
             <p className="font-display text-5xl uppercase leading-none">Jr Bees</p>
             <p className="mt-4 max-w-sm text-cream/85">
-              It takes a village to raise a child. This organization is that village. Players and cheerleaders first — not the plays.
+              It takes a village to raise a child. This organization is that village.
             </p>
           </div>
           <div>
