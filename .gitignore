@@ -1,0 +1,17 @@
+.node_modules.lock
+node_modules
+.vercel
+.output
+dist
+.netlify
+.nitro
+.tanstack
+screenshots
+.grok
+artifacts
+*.log
+.project_id
+.DS_Store
+AGENTS.md
+AGENTS.project.md
+startup.sh
