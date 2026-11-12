@@ -39,5 +39,5 @@ Herman asked for the craft pack specifically so this would not look generated, t
 
 - portarthurjrbees.jimdofree.com — mission language worth keeping, structure worth throwing out.
 - facebook.com/PAJrBees — practice nights, ages 9–12, Texans bubble, Lamar, #jrbeesareeverywhere.
-- Port Arthur News (2021 Honey Bees nationals; 2022 Texans camp) and Beaumont Enterprise (Texans grants, Ellen, NFL Draft).
+- Port Arthur News (2021 Honeybees nationals; 2022 Texans camp) and Beaumont Enterprise (Texans grants, Ellen, NFL Draft).
 - Public photos: honeycomb uniforms, gold helmets, gym-floor purple, VIP tent.

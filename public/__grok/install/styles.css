@@ -2,9 +2,9 @@
   --bg: #000000;
   --title: #fcfcfc;
   --white: #ffffff;
-  --text-footnote: 0.9375rem; /* 15 — iOS Subhead */
-  --text-body: 1.0625rem; /* 17 — iOS Body */
-  --text-title: 1.25rem; /* 20 — iOS Title 3 */
+  --text-footnote: 0.9375rem; /* 15 - iOS Subhead */
+  --text-body: 1.0625rem; /* 17 - iOS Body */
+  --text-title: 1.25rem; /* 20 - iOS Title 3 */
   --text-title-tablet: 1.5rem; /* 24 */
   --weight-regular: 400;
   --weight-medium: 500;
