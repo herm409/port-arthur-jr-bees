@@ -20,7 +20,7 @@ export const Route = createFileRoute("/")({
 function Home() {
   return (
     <>
-      <section id="hero" className="relative isolate min-h-[100svh] overflow-hidden bg-ink text-cream md:min-h-[36rem]">
+      <section id="hero" className="relative isolate min-h-[calc(100svh-11rem)] overflow-hidden bg-ink text-cream md:min-h-[36rem]">
         <picture>
           <source media="(max-width: 767px)" srcSet="/media/jimdo/25-i836be40.jpg" />
           <img
@@ -33,7 +33,7 @@ function Home() {
           />
         </picture>
         <div className="absolute inset-0 bg-gradient-to-r from-ink via-ink/80 to-ink/25" aria-hidden="true" />
-        <div className="relative mx-auto flex min-h-[100svh] max-w-6xl flex-col justify-end px-5 py-12 md:min-h-[36rem] md:justify-center md:px-8 md:py-20">
+        <div className="relative mx-auto flex min-h-[calc(100svh-11rem)] max-w-6xl flex-col justify-end px-5 py-8 md:min-h-[36rem] md:justify-center md:px-8 md:py-20">
           <p className="font-display text-sm uppercase tracking-[0.2em] text-lamp">
             {org.association}, a nonprofit
           </p>
